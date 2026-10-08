@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F9;--pn:#fff;--ink:#14213D;--mut:#5B6478;--ln:#D9DEE8;--tape:#FFC21A;--ok:#1C9B6C;--bl:#4C7BD1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1626;--pn:#17233A;--ink:#EAF0FF;--mut:#9AA7C2;--ln:#263552;--ok:#3CC48F;--bl:#7FA3EE}}
+:root[data-theme="dark"]{--bg:#0E1626;--pn:#17233A;--ink:#EAF0FF;--mut:#9AA7C2;--ln:#263552;--ok:#3CC48F;--bl:#7FA3EE}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "Bricolage Grotesque",system-ui,sans-serif}
+:focus-visible{outline:3px solid var(--bl);outline-offset:2px}
+.hero{max-width:980px;margin:0 auto;padding:48px 20px 20px}
+h1{font-size:clamp(2.3rem,6.5vw,4.4rem);line-height:1;font-weight:800;letter-spacing:-.035em;margin:0 0 18px;max-width:14ch}
+.hero p{max-width:60ch;color:var(--mut);margin:0}
+.trk{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--ln)}
+.ti{max-width:980px;margin:0 auto;padding:30px 20px 0;position:relative}
+.rail{position:absolute;left:20px;right:20px;top:45px;height:4px;background:var(--ln)}
+.rail i{display:block;height:100%;width:0;background:var(--ok);transition:width .7s cubic-bezier(.6,0,.2,1)}
+.box{position:absolute;top:-38px;left:0;width:30px;height:22px;margin-left:-15px;background:#C9954F;border-radius:3px;transition:left .7s cubic-bezier(.6,0,.2,1)}
+.box:after{content:"";position:absolute;left:12px;top:0;width:6px;height:100%;background:var(--tape)}
+.ti .wrap{position:absolute;left:20px;right:20px;top:0;height:0}
+.stops{display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+.stops button{background:none;border:0;color:var(--ink);font:inherit;font-size:.85rem;cursor:pointer;padding:0 0 10px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.dot{width:34px;height:34px;border-radius:50%;background:var(--pn);border:3px solid var(--ln);display:grid;place-items:center;font-weight:800;font-size:.8rem;transition:.3s}
+.done .dot{border-color:var(--ok)}
+[aria-selected=true] .dot{background:var(--tape);border-color:var(--tape);color:#14213D;transform:scale(1.12)}
+[aria-selected=true]{font-weight:800}
+.panel{max-width:980px;margin:0 auto;padding:30px 20px 80px}
+.js .panel{display:none}
+.js .panel.on{display:block;animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateX(28px)}}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;margin:0 0 10px;letter-spacing:-.02em}
+h3{margin:30px 0 10px;font-size:1.2rem}
+.lead{color:var(--mut);max-width:62ch;margin:0 0 20px}
+details{background:var(--pn);border:1px solid var(--ln);border-left:6px solid var(--tape);border-radius:6px;margin:0 0 8px}
+summary{cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.3rem;line-height:1;transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin:0;padding:0 16px 14px;color:var(--mut);max-width:70ch}
+ul.pl{padding:0;list-style:none;margin:0}
+ul.pl li{padding:12px 0;border-top:1px solid var(--ln);max-width:70ch}
+ul.pl b{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.chip{background:var(--pn);color:var(--ink);border:2px solid var(--ln);border-radius:99px;padding:7px 14px;font:inherit;font-size:.95rem;cursor:pointer;transition:.2s}
+.chip:hover{border-color:var(--tape);transform:translateY(-2px)}
+.chip.s{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.f4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:var(--pn)}
+.f4>div{padding:14px;border-left:1px solid var(--ln);font-size:.92rem}
+.f4>div:first-child{border-left:0}
+.f4 b{display:block;font-size:1.05rem;margin-bottom:4px}
+.f4 i{color:var(--mut);font-style:normal}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.pg div{background:var(--pn);border:1px solid var(--ln);border-radius:8px;padding:12px 14px;font-size:.93rem}
+.pg b{display:block}
+.pg span{color:var(--mut)}
+.seg{display:flex;gap:6px;margin:14px 0}
+.seg button{border:2px solid var(--ln);background:var(--pn);color:var(--ink);font:inherit;font-weight:600;padding:8px 16px;border-radius:99px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--tape);border-color:var(--tape);color:#14213D}
+.lg{display:flex;flex-wrap:wrap;gap:16px;font-size:.85rem;color:var(--mut);margin-bottom:10px}
+.lg s{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;text-decoration:none}
+.hd,.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.hd{font-size:.8rem;color:var(--mut);text-align:center;margin-bottom:4px}
+.d{min-height:74px;border:1px solid var(--ln);border-radius:6px;padding:5px 6px;font-size:.72rem;line-height:1.25;text-align:left;color:var(--mut);background:transparent;font-family:inherit;overflow:hidden}
+.d small{display:block;font-weight:800;font-size:.75rem;color:var(--ink);margin-bottom:2px}
+button.d{background:var(--pn);color:var(--ink);cursor:pointer;border-left-width:5px;transition:transform .2s}
+button.d:hover{transform:scale(1.05);z-index:2;position:relative}
+button.d span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.p1{border-left-color:var(--tape)}.p2{border-left-color:var(--ok)}.p3{border-left-color:var(--bl)}
+.w{background-image:repeating-linear-gradient(135deg,rgba(255,194,26,.22) 0 6px,transparent 6px 12px)}
+button.d.on{outline:3px solid var(--ink)}
+.det{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:16px 20px;margin-top:14px}
+.det h3{margin:0 0 8px}.det small{color:var(--mut);font-weight:400;font-size:.9rem}
+.det dl{margin:0;display:grid;grid-template-columns:90px 1fr;gap:6px 12px}.det dt{font-weight:800}.det dd{margin:0}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:99px;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer;margin:12px 8px 0 0}
+.btn.t{background:var(--tape);color:#14213D}.btn.g{background:transparent;color:var(--ink);border:2px solid var(--ln)}
+label{display:block;font-weight:600;margin:16px 0 6px}
+textarea,input{width:100%;font:inherit;background:var(--pn);color:var(--ink);border:2px solid var(--ln);border-radius:8px;padding:10px 12px}
+textarea{min-height:100px;resize:vertical}
+.pk{display:grid;grid-template-columns:70px 1fr auto;gap:8px;align-items:center;margin:8px 0}
+.nx{margin-top:34px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,80px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;transition:transform .3s;z-index:9}
+#toast.on{transform:translate(-50%,0)}
+@media(max-width:700px){.f4{grid-template-columns:1fr 1fr}.f4>div:nth-child(3){border-left:0}.f4>div:nth-child(n+3){border-top:1px solid var(--ln)}.stops button{font-size:.66rem}.dot{width:28px;height:28px}.rail{top:42px}.d{min-height:44px;padding:3px}button.d span{display:none}.det dl{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header class="hero"><h1>Content Strategy.</h1>
+<p>PlugHQ &amp; Shop With Esthel already get orders with very little content. This plan turns that into a brand people search for, trust, and order from again. Move through each stop. At the end, tell us what to change.</p></header>
+<nav class="trk" aria-label="Plan sections"><div class="ti"><div class="wrap"></div>
+<div class="rail"><i id="fill"></i></div><div class="rail" style="background:none"><div class="box" id="box"></div></div>
+<div class="stops" role="tablist"><button role="tab"><span class="dot">1</span>Profiles</button><button role="tab"><span class="dot">2</span>Team</button><button role="tab"><span class="dot">3</span>Keywords</button><button role="tab"><span class="dot">4</span>Content</button><button role="tab"><span class="dot">5</span>Calendar</button><button role="tab"><span class="dot">6</span>Your input</button></div></div></nav>
+
+<main>
+<section class="panel" role="tabpanel"><h2>Profiles: the first thing people see</h2>
+<p class="lead">When someone lands on your page, the photo, name and bio decide whether they stay. Every platform gets the same look and a clear way to order.</p>
+<details open><summary>TikTok</summary><p>Profile Optimization</p></details>
+<details><summary>Instagram</summary><p>Profile Optimization.</p></details>
+<details><summary>LinkedIn</summary><p>Profile Optimization</p></details>
+<details><summary>Snapchat</summary><p>Profile Optimization</p></details>
+<details><summary>Profile Optimization</summary><p>updating your professional online presence to rank higher in the eyes of our audience</p></details>
+<h3>Bio in four lines</h3>
+<p class="lead">Line 1: what you do. Line 2: proof. Line 3: how to order. Line 4: where you deliver.</p>
+<h3>Starters:</h3>
+<ul class="pl"><li><b>Unify accounts</b>Same handle, photo and bio style everywhere, each with the same call to action.</li>
+<li><b>Standardise video output</b>Vertical 9:16, a hook in the first three seconds, on-screen captions, and the same logo end card.</li>
+<li><b>Set up the content vault</b></li></ul></section>
+
+<section class="panel" role="tabpanel"><h2>Team: who does what</h2>
+<p class="lead">Four roles. Each one has a single clear job, so nothing waits on one person.</p>
+<details open><summary>Content Strategist and Social Media Manager</summary><p>Channel growth, algorithm strategy, copywriting, scheduling and content direction.</p></details>
+<details><summary>Graphic Designer and Video Editor</summary><p>Visual authority, proof-led assets, bold but simple ideas, and reusable templates so work moves fast.</p></details>
+<details><summary>Community Manager</summary><p>Replies to DMs, comments and WhatsApp messages within 12 hours of any post about the brand.</p></details>
+<details><summary>Sourcing and Logistics Lead</summary><p>Inspects items, makes them available for UGC videos and content, and keeps delivery to customers smooth.</p></details></section>
+
+<section class="panel" role="tabpanel"><h2>Keywords: how people find you</h2>
+<p class="lead">Use these in captions, scripts, hooks, hashtags, on-screen text and the profile name. Click a keyword to copy it.</p>
+<h3>Primary</h3><div class="chips" id="k1"></div>
+<h3>Secondary</h3><div class="chips" id="k2"></div>
+<h3>Written for answer engines</h3>
+<p class="lead">Put the question and the answer in the first lines. Example: "How do you order from China to Ghana? Send us the product link, we confirm the price, you pay, and we ship."</p></section>
+
+<section class="panel" role="tabpanel"><h2>Content: what we post and how we write it</h2>
+<p class="lead">Every post fits one pillar. Trends support the story. They never replace it.</p>
+<div class="pg">
+<div><b>Proof</b><span>Order journey, unboxing, receipts, picking up orders, shipping tracking, customer reviews, before and after.</span></div>
+<div><b>Education</b><span>How import works, customs, pricing, sourcing tips, how to order, bulk vs single.</span></div>
+<div><b>Request fulfilment</b><span>The "You asked, we sourced, we delivered" series.</span></div>
+<div><b>Product highlights</b><span>Trending items, wholesale catalogues, pre-order slots.</span></div>
+<div><b>Trust</b><span>Meet the team, behind the scenes, guarantees.</span></div>
+<div><b>Urgency</b><span>Deadlines, shipping schedules, limited slots.</span></div>
+<div><b>Trends</b><span>Trending sounds and formats, tied back to the brand.</span></div>
+<div><b>Highlights</b><span>Reviews and FAQ, pinned on every profile.</span></div></div>
+<h3>Caption formula idea</h3>
+<div class="f4"><div><b>Hook</b>Ordered from China and nothing arrived?<br><i>Stops the scroll.</i></div><div><b>Problem</b>Most buyers get no updates and no proof.<br><i>Names the worry.</i></div><div><b>Proof</b>Here is last week's order: packed Tuesday, delivered Friday.<br><i>Shows it works.</i></div><div><b>CTA</b>DM us to join the next pre-order.<br><i>One clear step.</i></div></div>
+<h3>Platforms</h3>
+<ul class="pl"><li><b>TikTok</b>Original vertical video and fast hooks. Every title in the calendar is a video.</li>
+<li><b>Instagram</b>Original content, a strong hook in the first three seconds, searchable captions, and a mix of Reels, carousels, photos and Stories.</li>
+<li><b>LinkedIn</b>The founder, business growth, sourcing lessons, customer trust, staff, milestones and commercial opportunities.</li>
+<li><b>Snapchat and WhatsApp channel</b>Daily proof and pre-order alerts. These support the three main platforms.</li></ul>
+<h3>The 90 days in three phases</h3>
+<ul class="pl"><li><b>Days 1 to 28: clarify and build trust</b>Who we are, what we source, how to order, what pre-order means, the delivery process, the founder, FAQ videos.</li>
+<li><b>Days 29 to 56: build proof and consistency</b>Delivered packages, reviews, order packing, arrival updates, request-to-delivery case studies, repeat customers.</li>
+<li><b>Days 57 to 90: increase interaction</b>Polls, "choose the next pre-order", question stickers, customer request videos, product comparisons, live Q&amp;A, comment replies.</li></ul></section>
+
+<section class="panel" role="tabpanel"><h2>The 90-day calendar</h2>
+<p class="lead">Four posts a week on each platform: We can pick days and agree on that or we can test as and when to know what is working for us. 90 Days. Pick a platform, then click any day. Please not that this is ment for planning purposes, we can adjust anything and also change plans</p>
+<ul class="pl"><li><b>Why this plan and not the daily list</b>The daily list means 90 posts on three platforms, 270 in total. That is too much and also not realistic based of timeing and outliers. This plan keeps 52 posts per platform, gives each platform its own angle, and builds urgency around three pre-order windows. We kept the guarantee post from the daily list because it answers the question buyers ask most.</li></ul>
+<div class="seg" id="seg"><button aria-pressed="true">TikTok</button><button aria-pressed="false">Instagram</button><button aria-pressed="false">LinkedIn</button></div>
+<div class="lg"><span><s style="background:var(--tape)"></s>Days 1 to 28</span><span><s style="background:var(--ok)"></s>Days 29 to 56</span><span><s style="background:var(--bl)"></s>Days 57 to 90</span><span><s class="w" style="border:1px solid var(--tape)"></s>Pre-order window</span></div>
+<div class="hd"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+<div class="cal" id="cal"></div><div class="det" id="det"></div></section>
+
+<section class="panel" role="tabpanel"><h2>Your input</h2>
+<p class="lead">Tell us what to add, change or question. Your notes save in this browser as you type. Press Send when you are done.</p>
+<label for="nm">Your name</label><input id="nm" autocomplete="name"><input id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+<label for="f1">Ideas you want to add</label><textarea id="f1"></textarea>
+<label for="f2">Things you want to change</label><textarea id="f2"></textarea>
+<label for="f3">Questions for us</label><textarea id="f3"></textarea>
+<h3>Calendar days you want changed</h3><div id="pk"><p class="lead">None yet. Open a day in the calendar and choose "Suggest a change".</p></div>
+<button class="btn t" id="sd">Send to us</button><button class="btn" id="cp">Copy instead</button><button class="btn g" id="cl">Clear all</button><p id="st" class="lead" role="status"></p></section>
+</main><div id="toast" role="status"></div>
+
+<script>
+/* Paste your Cloudflare Worker URL between the quotes to switch on sending. */
+const ENDPOINT="plughq-feedback.nakonajo4779.workers.dev
+A";
+const D=[
+[1,"Who we are in 30 seconds","[Reel] Meet PlugHQ: what we import and for who","Why I started PlugHQ"],
+[3,"What does pre-order actually mean?","[Carousel] Pre-order explained in 5 slides","What we source and who we source it for"],
+[5,"Order to doorstep: the full journey","[Carousel] How to order in 4 steps","How a request becomes a delivered package"],
+[7,"Trends","[Photo] Meet the founder","Poll: What's the hardest part of buying from abroad?"],
+[8,"Pre-order vs buying in-store: what's the difference?","[Reel] Our delivery process, step by step","Our delivery process and timelines, explained"],
+[10,"FAQ: How long does delivery take?","[Carousel] FAQ: payment, timelines, tracking","Staff spotlight: who handles your order"],
+[12,"Customer unboxing #1","[Reel] Customer unboxing compilation","Customer appreciation: our first customers"],
+[14,"Trends","[Photo] Packing table, behind the scenes","Poll: What do you import most often?"],
+[15,"Pre-order window is OPEN: how to get a slot","[Reel] Window 1 open: what's in this round","Why we run monthly pre-order windows"],
+[17,"Bulk vs single orders: which saves more?","[Carousel] Bulk vs single: price breakdown","Lessons from shipping in bulk"],
+[19,"You asked, we sourced #1","[Reel] You asked, we sourced #1","How customer requests shape what we stock"],
+[21,"Trends","[Photo] 7 days left: slots remaining","Poll: Help us choose the next product"],
+[22,"Why imported prices differ: the real breakdown","[Carousel] Where your money goes in an import","Pricing transparency: what you actually pay for"],
+[24,"Behind the scenes: sourcing day","[Reel] Supplier chat and product check","How we vet suppliers"],
+[26,"48 hours left: last slots","[Photo] Last-call countdown","Milestone: orders processed this round"],
+[28,"Window 1 closed: what happens next","[Reel] Window 1 recap","Window 1 recap: numbers and lessons"],
+[29,"Shipment update: your goods are on the way","[Reel] Tracking update: where your order is","Supply chain update: what's in transit"],
+[31,"Delivered: customer reaction","[Carousel] Delivered this week: receipts and photos","Customer appreciation: thank you to this round's buyers"],
+[33,"From request to delivery: case study #1","[Reel] Request-to-delivery case study #1","Case study: one request, start to doorstep"],
+[35,"Trends","Trends","Poll: What delay frustrates you most when importing?"],
+[36,"Customs and duty explained simply","[Carousel] Customs 101: what gets taxed and why","Navigating customs: what we've learned"],
+[38,"Order packing ASMR","[Reel] Packing orders: before and after","Staff activity: a day in the packing room"],
+[40,"Repeat customer story","[Photo] Repeat customer feature","Why customers reorder"],
+[42,"Weekly pick #1: trending item","[Carousel] This week's trending imports","Question: What should we source next?"],
+[43,"Window 2 is open: new items just dropped","[Reel] Window 2 catalogue reveal","Window 2: what we're importing and why"],
+[45,"How to spot import scams before you pay","[Carousel] 7 red flags when pre-ordering","How we protect customers from import scams"],
+[47,"You asked, we sourced #2","[Reel] You asked, we sourced #2","Customer request of the month"],
+[49,"Trends","Trends","Behind the scenes: negotiating with suppliers"],
+[50,"Reading customer reviews, the honest ones","[Carousel] Review wall: what customers say","What feedback taught us this quarter"],
+[52,"Product comparison: which is better value?","[Reel] Product comparison","Poll: Which product category should we expand?"],
+[54,"Final 48 hours: slots almost gone","[Photo] Final slots countdown","Milestone: packages delivered so far"],
+[56,"POV: packing day after the window closes","[Reel] Window 2 recap","Window 2 recap: numbers and lessons"],
+[57,"Choose the next pre-order: you vote","[Reel] Vote: next pre-order (poll sticker)","Help us choose the next product"],
+[59,"Comment-reply video: your questions answered","[Reel] Answering your top DMs (question sticker)","Q&A: what you've asked us this month"],
+[61,"Shipment arrival: unboxing the stock","[Carousel] Stock arrival: what landed","Behind the scenes: inventory arrival"],
+[63,"Trends","Trends","Founder story: my biggest mistake in year one"],
+[64,"Customer request video: your wish list, answered","[Carousel] Top 5 requested items this month","What customer requests tell us about market demand"],
+[66,"LIVE: Ask us anything about importing","[Photo] Join our live Q&A","Live Q&A: ask our founder anything"],
+[68,"Are imported products guaranteed? Our promise","[Carousel] Our service promise, in writing","Setting honest guarantees in an import business"],
+[70,"Trends","Trends","Poll: What would make you reorder faster?"],
+[71,"Window 3 is open: your vote won","[Reel] Window 3 reveal: the product you chose","You voted, we sourced: Window 3"],
+[73,"Wholesale catalogue walkthrough","[Carousel] Wholesale catalogue preview","Wholesale pricing: how resellers earn with us"],
+[75,"You asked, we sourced #3","[Reel] You asked, we sourced #3","Customer story: a reseller who grew with us"],
+[77,"Trends","Trends","Staff activity: meet the person who tracks your shipment"],
+[78,"Before and after: what they requested vs what arrived","[Carousel] Request vs delivery","Quality control: how we check every order"],
+[80,"Meet the team: who does what","[Reel] Meet the team","Team appreciation: the people behind PlugHQ"],
+[82,"72 hours left: slots running out","[Photo] Slots closing countdown","Milestone: orders and customers served"],
+[84,"Window 3 closed: thank you","[Reel] Window 3 recap","Window 3 recap: what worked"],
+[85,"Shipping schedule: when each batch lands","[Carousel] Delivery schedule for this round","90 days in: numbers and lessons"],
+[87,"Why repeat customers get first access","[Reel] Introducing VIP access for repeat customers","Customer appreciation: our repeat customers"],
+[89,"Trends","Trends","Next 90 days: where PlugHQ is going"],
+[90,"90 days of PlugHQ: the full story","[Reel] 90-day recap montage","Business expansion: what we're building next"]];
+const M={};D.forEach(e=>M[e[0]]=e);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const ls={g(k){try{return localStorage.getItem(k)}catch(e){return null}},s(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1800)};
+const copy=t=>{const ok=()=>toast("Copied");try{navigator.clipboard.writeText(t).then(ok).catch(fb)}catch(e){fb()}function fb(){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){toast("Copy failed. Select the text and copy it.")}a.remove()}};
+
+/* tabs */
+const T=$$(".stops button"),P=$$(".panel"),box=$("#box"),fill=$("#fill");
+function go(i){document.documentElement.classList.add("js");T.forEach((b,j)=>{b.setAttribute("aria-selected",j==i);b.classList.toggle("done",j<i)});P.forEach((p,j)=>p.classList.toggle("on",j==i));const x=((i+.5)/6*100)+"%";box.style.left=x;fill.style.width=x;const h=$(".hero").offsetHeight;if(scrollY>h)scrollTo({top:h})}
+T.forEach((b,i)=>{b.onclick=()=>go(i);b.onkeydown=e=>{if(e.key=="ArrowRight")go(Math.min(5,i+1)),T[Math.min(5,i+1)].focus();if(e.key=="ArrowLeft")go(Math.max(0,i-1)),T[Math.max(0,i-1)].focus()}});
+P.forEach((p,i)=>{if(i<5){const b=document.createElement("button");b.className="btn t nx";b.textContent="Next stop: "+T[i+1].textContent.replace(/^\d/,"");b.onclick=()=>go(i+1);p.appendChild(b)}});
+box.style.left="-5%";setTimeout(()=>go(0),400);
+
+/* keywords */
+[["#k1",["How to order from China","Preorder agent","Buy from China to Ghana","Product sourcing agent","PlugHQ pre-orders","Unboxing client orders"]],["#k2",["Quality check import","Wholesale sourcing","Doorstep delivery pre-order","Authentic supplier plug"]]].forEach(([s,a])=>a.forEach(k=>{const b=document.createElement("button");b.className="chip";b.textContent=k;b.onclick=()=>{copy(k);b.classList.add("s");setTimeout(()=>b.classList.remove("s"),900)};$(s).appendChild(b)}));
+
+/* calendar */
+let pf=1,cur=1;const names=["","TikTok","Instagram","LinkedIn"];
+const ph=d=>d<=28?1:d<=56?2:3,win=d=>(d>=15&&d<=28)||(d>=43&&d<=56)||(d>=71&&d<=84);
+function draw(){const c=$("#cal");c.innerHTML="";for(let d=1;d<=90;d++){const e=M[d],n=document.createElement(e?"button":"div");n.className="d"+(e?" p"+ph(d):"")+(win(d)?" w":"")+(d==cur&&e?" on":"");n.innerHTML="<small>"+d+"</small>"+(e?"<span>"+e[pf]+"</span>":"");if(e){n.setAttribute("aria-label","Day "+d);n.onclick=()=>{cur=d;draw();show(d)}}c.appendChild(n)}}
+function show(d){const e=M[d];$("#det").innerHTML="<h3>Day "+d+" <small>"+["","Clarify and build trust","Build proof and consistency","Increase interaction"][ph(d)]+(win(d)?", pre-order window open":"")+"</small></h3><dl><dt>TikTok</dt><dd>"+e[1]+"</dd><dt>Instagram</dt><dd>"+e[2]+"</dd><dt>LinkedIn</dt><dd>"+e[3]+"</dd></dl><button class='btn t' id='sg'>Suggest a change for Day "+d+"</button>";$("#sg").onclick=()=>{if(!S.picks.find(p=>p.d==d))S.picks.push({d,n:""});save();rp();toast("Added to Your input")}}
+$$("#seg button").forEach((b,i)=>b.onclick=()=>{pf=i+1;$$("#seg button").forEach(x=>x.setAttribute("aria-pressed",x==b));draw()});
+
+/* input */
+let S={nm:"",f1:"",f2:"",f3:"",picks:[]};try{S=Object.assign(S,JSON.parse(ls.g("plughq-input")||"{}"))}catch(e){}
+const save=()=>ls.s("plughq-input",JSON.stringify(S));
+["nm","f1","f2","f3"].forEach(k=>{const t=$("#"+k);t.value=S[k];t.oninput=()=>{S[k]=t.value;save()}});
+function rp(){const b=$("#pk");if(!S.picks.length){b.innerHTML='<p class="lead">None yet. Open a day in the calendar and choose "Suggest a change".</p>';return}b.innerHTML="";S.picks.forEach((p,i)=>{const r=document.createElement("div");r.className="pk";r.innerHTML="<b>Day "+p.d+"</b>";const n=document.createElement("input");n.placeholder="What should change?";n.value=p.n;n.setAttribute("aria-label","Change for Day "+p.d);n.oninput=()=>{p.n=n.value;save()};const x=document.createElement("button");x.className="btn g";x.style.margin=0;x.textContent="Remove";x.onclick=()=>{S.picks.splice(i,1);save();rp()};r.append(n,x);b.appendChild(r)})}
+const msg=()=>"PlugHQ 90-day plan: feedback from "+(S.nm||"a client")+"\n\nIdeas to add:\n"+(S.f1||"None")+"\n\nThings to change:\n"+(S.f2||"None")+"\n\nQuestions:\n"+(S.f3||"None")+"\n\nCalendar days to change:\n"+(S.picks.length?S.picks.map(p=>"Day "+p.d+" ("+M[p.d][1]+"): "+(p.n||"no note")).join("\n"):"None");
+$("#cp").onclick=()=>copy(msg());
+$("#sd").onclick=async()=>{const st=$("#st"),b=$("#sd");
+if(!ENDPOINT){st.textContent="Sending is not switched on yet. Use Copy instead.";return}
+if(!(S.f1+S.f2+S.f3).trim()&&!S.picks.length){st.textContent="Write something first.";return}
+b.disabled=true;st.textContent="Sending...";
+try{const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:S.nm,f1:S.f1,f2:S.f2,f3:S.f3,picks:S.picks,hp:$("#hp").value})});
+if(!r.ok)throw 0;st.textContent="Sent. Thank you."}catch(e){st.textContent="Could not send. Use Copy instead and send it to us on WhatsApp."}
+b.disabled=false};
+$("#cl").onclick=()=>{S={nm:"",f1:"",f2:"",f3:"",picks:[]};save();["nm","f1","f2","f3"].forEach(k=>$("#"+k).value="");rp();toast("Cleared")};
+draw();show(1);rp();
+</script></body></html>
